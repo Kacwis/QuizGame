@@ -1,0 +1,482 @@
+:root {
+	--body-background-color: rgba(252, 89, 92, 1);
+	--body-background-image: radial-gradient(
+		circle,
+		rgba(252, 89, 92, 1) 10%,
+		rgba(53, 51, 185, 1) 100%
+	);
+	--centered-border-color: #222;
+	--centered-background-color: #333333b9;
+	--button-border-color: white;
+	--start-game-border-color: rgb(92, 172, 12);
+	--start-game-background-color: rgb(110, 214, 5);
+	--reset-button-border-color: red;
+	--reset-button-background-color: rgb(240, 63, 63);
+	--active-border-color: greenyellow;
+	--active-hover-color: rgb(92, 172, 12);
+	--error-color: red;
+	--incorrect-color: red;
+	--correct-color: yellowgreen;
+	--marker-undefined: grey;
+	--marker-correct: yellowgreen;
+	--marker-incorrect: red;
+	--next-background-color: yellow;
+	--next-font-color: black;
+	--next-border-color: rgb(197, 197, 26);
+	--options-heading-color: white;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	background-color: var(--body-background-color);
+	background-image: var(--body-background-image);
+}
+
+.main {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.centered {
+	width: 50%;
+	height: 70%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	border: 5px solid var(--centered-border-color);
+	border-radius: 25px;
+	background-color: var(--centered-background-color);
+}
+
+.centered h1 {
+	margin-top: 1.8rem;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 75%;
+}
+
+.menu h3 {
+	font-size: 1.7rem;
+	color: var(--options-heading-color);
+}
+
+.categories {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 60%;
+	margin-top: 1rem;
+	margin-bottom: 2rem;
+}
+
+.categories button {
+	width: 8rem;
+	height: 4.5rem;
+	margin: 0.2rem;
+}
+
+.questions-and-difficulty {
+	display: flex;
+	align-items: center;
+	width: 80%;
+	justify-content: space-evenly;
+	margin-top: 1rem;
+}
+
+.questions-number {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.questions-number-inner {
+	margin-top: 0.7rem;
+}
+
+.questions-number button {
+	width: 5rem;
+	height: 3.5rem;
+	padding: 0.8rem;
+}
+
+.difficulty {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.difficulty-inner {
+	margin-top: 0.7rem;
+}
+
+.difficulty-inner button {
+	padding: 0.8rem;
+	height: 4rem;
+	width: 7.5rem;
+}
+
+.menu-button {
+	background-color: transparent;
+	padding: 0.5rem;
+	font-weight: bold;
+	font-size: 1.2rem;
+	border: 2px solid var(--button-border-color);
+	border-radius: 10px;
+	transition: box-shadow 0.2s ease-in-out, border 0.1s ease-in-out;
+}
+
+.menu-button:hover {
+	box-shadow: var(--button-border-color) 0px 20px 30px -10px;
+}
+
+.controls {
+	margin-top: 4rem;
+	display: flex;
+	align-items: center;
+}
+
+.controls button {
+	width: 12rem;
+	font-weight: bold;
+	font-size: 1.5rem;
+	border-radius: 10px;
+	padding: 0.7rem;
+	text-align: center;
+	transition: box-shadow 0.2s ease-in-out, background 0.1s ease-in,
+		border 0.05s ease-in, margin 0.5s ease-in-out;
+}
+
+.start-game {
+	background-color: transparent;
+	color: white;
+	border: 3px solid white;
+	margin-right: 0.2rem;
+}
+
+.start-game-inactive {
+	color: grey;
+	border-color: grey;
+	transition: margin 0.5s ease-in-out;
+	pointer-events: none;
+}
+
+.start-game-inactive:hover {
+	margin-right: 1rem;
+}
+
+.start-game:hover {
+	box-shadow: var(--start-game-border-color) 0px 20px 30px -10px;
+	border-color: var(--start-game-border-color);
+	background-color: var(--start-game-background-color);
+	margin-right: 1rem;
+}
+
+.reset {
+	background-color: transparent;
+	border: 3px solid white;
+	color: white;
+}
+
+.reset:hover {
+	box-shadow: var(--reset-button-border-color) 0px 20px 30px -10px;
+	border-color: var(--reset-button-border-color);
+	background-color: var(--reset-button-background-color);
+	margin-left: 1rem;
+}
+
+.active {
+	border-color: var(--active-border-color);
+	border-width: 5px;
+}
+.active:hover {
+	box-shadow: var(--active-hover-color) 0px 20px 30px -10px;
+}
+
+.hidden {
+	display: none;
+}
+
+.error {
+	color: var(--error-color);
+}
+
+.game {
+	height: 70%;
+	width: 80%;
+	flex-direction: column;
+	word-wrap: break-word;
+	margin-top: 2rem;
+}
+
+.answers {
+	display: flex;
+	flex-direction: column;
+	margin-top: 2rem;
+}
+
+.answers button {
+	padding: 1rem;
+	border: 3px solid var(--button-border-color);
+	background-color: transparent;
+	margin: 0.5rem 0;
+	width: 100%;
+	font-weight: bold;
+	font-size: 1.1rem;
+	text-align: left;
+	position: relative;
+	overflow: hidden;
+	transition: border 0.1s ease-in-out;
+}
+
+.answers button:hover {
+	border-width: 7px;
+}
+
+.answers button p {
+	position: relative;
+	transition: 0.5s;
+}
+
+.incorrect::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 130%;
+	height: 55px;
+	background-color: var(--incorrect-color);
+	transform: translate(-110%, 0) skew(-30deg);
+	transition: 0.5s 0.1s;
+}
+
+.correct::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 130%;
+	height: 55px;
+	background-color: var(--correct-color);
+	transform: translate(-110%, 0) skew(-30deg);
+	transition: 0.5s 0.1s;
+}
+
+.answer-after::before {
+	transform: translate(-5%, 0) skew(-15deg);
+}
+
+.marker {
+	width: 15px;
+	height: 15px;
+	border: 2px solid var(--marker-undefined);
+	border-radius: 50%;
+	margin: 0.5rem;
+}
+
+.question-markers {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+
+.correct-marker {
+	border-color: var(--marker-correct);
+}
+
+.incorrect-marker {
+	border-color: var(--marker-incorrect);
+}
+
+.game-buttons {
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	margin-top: 1rem;
+}
+
+.game-buttons button {
+	width: 5rem;
+	background-color: transparent;
+	border: 3px solid white;
+	font-weight: bold;
+	font-size: 1.2rem;
+	padding: 0.5rem;
+	transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+		border-color 0.1s ease-in;
+}
+
+.finish:hover {
+	background-color: var(--start-game-background-color);
+	border: 3px solid var(--start-game-border-color);
+	box-shadow: var(--start-game-border-color) 0px 20px 30px -10px;
+}
+
+.back-to-menu-button:hover {
+	background-color: var(--reset-button-background-color);
+	box-shadow: var(--reset-button-border-color) 0px 20px 30px -10px;
+	border-color: var(--reset-button-border-color);
+}
+
+.next:hover {
+	background-color: var(--next-background-color);
+	color: var(--next-font-color);
+	border-color: var(--next-border-color);
+	box-shadow: var(--next-border-color) 0px 20px 30px -10px;
+}
+
+.backdrop {
+	position: absolute;
+	left: 35%;
+	top: -100%;
+	width: 30%;
+	height: 30%;
+	display: flex;
+	background-color: rgba(117, 117, 117, 0.7);
+	z-index: 100;
+	border-radius: 25px;
+	border: 5px solid black;
+	overflow: hidden;
+}
+
+.backdrop-animation {
+	animation-name: backdrop;
+	animation-duration: 2s;
+	top: 35%;
+}
+
+.tint {
+	position: absolute;
+	top: -100%;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.tint-animation {
+	animation-name: tint;
+	animation-duration: 2s;
+	top: 0;
+}
+
+@keyframes backdrop {
+	from {
+		top: -100%;
+	}
+	to {
+		top: 35%;
+	}
+}
+
+@keyframes tint {
+	from {
+		top: -100%;
+	}
+	to {
+		top: 0;
+	}
+}
+
+.result-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.result-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	margin-top: 3rem;
+}
+
+.result-value {
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+}
+
+.result-value h3 {
+	margin-right: 1rem;
+}
+
+.result-markers {
+	display: flex;
+	margin-top: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+.result-buttons button {
+	border: 3px solid white;
+	background-color: transparent;
+	padding: 0.5rem;
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin: 0.25rem;
+	transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+		border-color 0.1s ease-in, margin 0.3s ease-in;
+}
+
+.throphy {
+	position: relative;
+	left: -100%;
+	width: 200px;
+	height: 240px;
+	padding: 1rem;
+	top: 1rem;
+}
+
+.throphy-after {
+	animation-name: throphy;
+	animation-duration: 1.5s;
+	left: 1rem;
+	top: 1rem;
+}
+
+@keyframes throphy {
+	from {
+		left: -100%;
+	}
+	to {
+		left: 1rem;
+	}
+}
+
+.laurel-leaves {
+	width: 120px;
+	height: 130px;
+	position: absolute;
+	top: -100%;
+}
+
+.laurel-leaves-after {
+	top: 3rem;
+	left: 3.5rem;
+	animation-name: leaves;
+	animation-duration: 2s;
+}
+
+@keyframes leaves {
+	from {
+		top: -100%;
+	}
+	to {
+		top: 3rem;
+	}
+}

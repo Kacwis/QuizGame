@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Quiz Game</title>
+		<link rel="stylesheet" href="css/styles.css" />
+	</head>
+	<body>
+		<div class="main">
+			<div class="centered">
+				<h1 id="main-title">Quiz Game</h1>
+				<span class="error hidden" id="error">You need to choose category</span>
+				<div class="menu" id="menu">
+					<h3>Category</h3>
+					<div class="categories" id="categories"></div>
+					<div class="questions-and-difficulty">
+						<div class="questions-number">
+							<h3>Number of questions</h3>
+							<div class="questions-number-inner" id="questions-number">
+								<button class="menu-button" id="questions-number-5" value="5">
+									5
+								</button>
+								<button class="menu-button" id="questions-number-10" value="10">
+									10
+								</button>
+							</div>
+						</div>
+						<div class="difficulty">
+							<h3>Difficulty</h3>
+							<div class="difficulty-inner" id="difficulties">
+								<button class="menu-button" value="easy">Easy</button>
+								<button class="menu-button" value="medium">Medium</button>
+								<button class="menu-button" value="hard">Hard</button>
+							</div>
+						</div>
+					</div>
+					<div class="controls">
+						<button class="start-game-inactive" id="start-game">
+							Start game
+						</button>
+						<button class="reset" id="reset">Reset</button>
+					</div>
+				</div>
+				<div class="game hidden" id="game">
+					<div class="question-markers" id="question-markers"></div>
+					<h2 id="question">How many square kilometers are in acre?</h2>
+					<div class="answers" id="answers"></div>
+					<div class="game-buttons">
+						<button class="next hidden" id="next-question">Next</button>
+						<button class="finish hidden" id="finish">Finish</button>
+						<button class="back-to-menu-button" id="back-to-menu">Menu</button>
+					</div>
+				</div>
+				<div class="result">
+					<div class="backdrop" id="backdrop">
+						<div>
+							<img
+								src="img/throphy.png"
+								alt="throphy"
+								class="throphy"
+								id="throphy"
+							/>
+							<img
+								src="img/laurel_leaves.png"
+								alt="laurel leaves for throphy"
+								class="laurel-leaves"
+								id="laurel-leaves"
+							/>
+						</div>
+						<div class="result-inner">
+							<div class="result-info">
+								<div class="result-value">
+									<h3>Result</h3>
+									<label id="result">3 / 10</label>
+								</div>
+								<div class="result-markers" id="result-markers"></div>
+							</div>
+							<div class="result-buttons">
+								<button class="start-game" id="try-again">Try again</button>
+								<button class="reset" id="result-menu">Menu</button>
+							</div>
+						</div>
+					</div>
+					<div class="tint" id="tint"></div>
+				</div>
+				<h5>Developed by Kacper Wiśniewski</h5>
+			</div>
+		</div>
+		<script src="js/script.js"></script>
+	</body>
+</html>
